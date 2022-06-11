@@ -1,0 +1,248 @@
+/* importo a fonte que vou usar */
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700&display=swap');
+
+
+/* reseto as configurações padrões dos navegadores */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+/* crio as variáveis para armazenar todas as cores que vou usar */
+:root{
+    --white: #FFF;
+    --whitesmoke: #F9F9F9;
+    --light_grey: #ECECEC;
+    --grey: #C4C4C4;
+    --medium_grey: #A7A7A7;
+    --deep_grey: #343434;
+    --black: #000000;
+    --blue: #1B77F3;
+    --red: #CF3C3F;
+}
+
+/* como a main é mãe das 2 sections, preciso colocar display flex para que uma fique do lado da outra */
+main{
+    display: flex;
+}
+
+/* alinhando o wrapper*/
+.wrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* toda a seção de login a esquerda e alinhada no centro */
+.login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /* espaço entre os 2 wrappers*/
+    justify-content: space-between;
+
+    width: 100%;
+    max-width: 500px;
+    min-height: 100vh;
+    
+    /* a função clamp define um valor mínimo, ideal e máximo */
+    padding: clamp(35px, 8%, 70px);
+}
+
+/* tamanho da logo da Riot Games */
+.login_logo{
+    width: 130px;
+    margin-bottom: 80px;
+}
+
+/* defino o tamanho da fonte de "Fazer login" e a sua cor */
+.login_title{
+    color: var(--deep_grey);
+    font-size: 1.5em;
+    margin-bottom: 30px;
+}
+
+/* label de nome se usuário e senha ocupando 100% do tamanho */
+.login_label{
+    width: 100%;
+    margin-bottom: 20px;
+    display: block;
+}
+
+/* defino todas as propriedades da caixa de input */
+.input{
+    width: 100%;
+    background-color: var(--light_grey);
+
+    /* defino a borda de 2px com 100% de transparência para no futuro adicionar uma borda cinza ao clica-lo sem aumentar o seu tamanho, sem ele fica estranho */
+    border: 2px solid rgba(0,0,0,0);
+
+    outline: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    padding: 25px 10px 10px;
+    font-weight: 600;
+    color: var(--deep_grey);
+}
+
+/* acesso o span do login_label para coloca-lo dentro da box e estiliza-lo*/
+.login_label span{
+    position: absolute;
+    font-size: 0.8em;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--medium_grey);
+    margin: 20px;
+    cursor: text;
+
+    /* animação */
+    transition: all 200ms ease;
+}
+
+/* faço o background mudar de cor ao seleciona-lo*/
+.input:focus{
+    background-color: var(--whitesmoke);
+    border: 2px solid var(--deep_grey);
+}
+
+/* faço o texto do login_label subir um pouco ao seleciona-lo */
+.login_label .span-active{
+    font-size: 0.7em;
+    margin: 8px 10px;
+}
+
+/* manipulando o posição das logos de login */
+.login_icons{
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* manipulando o tamanho das logos de login */
+.login_icons img {
+    width: 15px
+}
+
+/* acesso a classe dos botões para centraliza-los e definir tamanhos e estilos */
+.icons_button{
+    width: 33.33%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+
+/* pego o primeiro botão que é filho da login_icons */
+.login_icons .icons_button:nth-child(1){
+    background-color: var(--blue);
+}
+/* pego o segundo botão que é filho da login_icons */
+.login_icons .icons_button:nth-child(2){
+    background-color: var(--black);
+}
+/* pego o terceiro botão que é filho da login_icons */
+.login_icons .icons_button:nth-child(3){
+    background-color: var(--light_grey);
+}
+
+/* defino a posição do manter login e seu tanho e fonte */
+.login_label_checkbox {
+    width: 100%;
+    margin: 15px 0 50px;
+    font-size: 0.9em;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+/* estilizando o checkbox */
+.input_checkbox{
+
+    /* resetando todos os estilos aplicados no checkbox */
+    appearance: none;
+
+    width: 20px;
+    height: 20px;
+    background-color: var(--light_grey);
+    margin-right: 8px;
+    border-radius: 3px;
+}
+
+/* defino a cor para vermelho quando ele tiver marcado */
+.input_checkbox:checked{
+    background-color: var(--red);
+}
+
+/* criando o "V" para flagar o checkbox */
+.input_checkbox:checked::after{
+    content: "";
+    display: block;
+    width: 5px;
+    height: 10px;
+
+    /* crio a bordinha */
+    border: 3px solid white;
+    /* removo o topo e o left */
+    border-width: 0 3px 3px 0;
+    /* rotaciono para ficar no formato de flag */
+    transform: rotate(45deg);
+    /* posiciono dentro da box de check */
+    margin: 2px 6px;
+}
+
+/* personalizando o botão de login para quando ele tiver habilitado */
+.login_button{
+    width: 60px;
+    height: 60px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--red);
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 60px;
+}
+.login_button svg{
+    fill: white;
+}
+
+/* personalizando o botão de login para quando ele tiver desabilitado */
+.login_button:disabled{
+      cursor: auto;
+      background-color: white;
+      border: 2px solid var(--light_grey);
+}
+.login_button:disabled svg{
+    fill: var(--grey);
+}
+
+/* personalizando os links */
+.login_link{
+    font-size: 0.8em;
+    text-decoration: none;
+    color: var(-medium_grey);
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+/* */
+.wallpaper{
+    width: 100%;
+    background-image: url('./imagens/wallpaper.jpg');
+    background-size: cover;
+    background-position: center;
+
+    /* ocupar 100% do espaço que sobrar para não empurrar a outra div*/
+    flex: 1
+}
